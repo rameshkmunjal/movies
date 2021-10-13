@@ -1,13 +1,14 @@
 import './movieList.css';
 import React from 'react';
 
-const MovieDetail = ({ movie }) =>{
+const MovieDetail = (movie) =>{
+    console.log(movie);
     if (!movie)
     {
         return(<div>Loading....</div>)
     }
-    return (
-        <div className="singleMovieBox container">
+    return (        
+        <div className="movieBox container">
             <div className="posterBox">
                 <img src={movie.Poster} alt={movie.Title} />
             </div>

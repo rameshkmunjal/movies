@@ -7,15 +7,16 @@ body {
 	background-color: navy;
 }
 .container {
-	background: rgb(20, 150, 240);
+	background: white;
 	padding: 20px;
 }
 
 .imgBox {
 	border-bottom: 5px solid #fff;
 	display: flex !important;
+	color: blue;
 	align-items: center !important;
-	background: rgb(170, 200, 230);
+	background: #ddd;
 	cursor: pointer;
 }
 .content {

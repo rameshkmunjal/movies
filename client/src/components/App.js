@@ -1,63 +1,51 @@
-import React from 'react';
-import SearchBar from './SearchBar';
+import React, {useState, useEffect} from 'react';
+import axios  from 'axios';
 import MovieList from './MovieList';
-import MovieDetail from './MovieDetail';
-import axios from 'axios';
+import MovieDetail  from './MovieDetail';
 
-class App extends React.Component
-{
-    constructor(props){
-        super(props);
-        this.state = { movies: [], selectedMovie: null };
-        this.baseUrl = "http://www.omdbapi.com";
-        this.authToken = "499e294";
-    }
-
+const App=()=>{
+    const [movieData, setMovieData] = useState([]);
+    const [movie, setSingleMovie]=useState(null);
+    const baseUrl = "http://www.omdbapi.com";
+    const authToken = "499e294";
+    const term="king";
     
+    useEffect(() =>{
+        const getAllMovies = async () =>{
+            const response = await axios.get(`${baseUrl}/?s=${term}&apikey=${authToken}`);
+            //console.log("line no 22" , response.data);
+            const responseData = response.data.Search;
+            console.log("line no 22" , response.data.Search[0]);
+            const firstMovie=response.data.Search[0];
+            getSingleMovieDetails(firstMovie);
+            setMovieData(responseData);           
+        }
 
-    componentDidMount = () =>{
-        this.onTermSubmit("jungle");
+        getAllMovies();
+    }, []);
+
+    const onMovieSelect=(movie)=>{
+        getSingleMovieDetails(movie);
     }
 
-    onTermSubmit = async(term) =>{        
-        const response = await axios.get(`${this.baseUrl}/?s=${term}&apikey=${this.authToken}`);
-        const singleMovie = response.data.Search[0];
-        this.setState({movies: response.data.Search});
-        this.getSingleMovieDetails(singleMovie);
+    const getSingleMovieDetails=async(movie)=>{
+        const movieId = movie.imdbID;
+        const res = await axios.get(`${baseUrl}/?i=${movieId}&apikey=${authToken}`);
+        console.log(res.data);
+        setSingleMovie(res.data);
     }
-
-    onMovieSelect = (movie) =>{        
-        this.getSingleMovieDetails(movie);
-    }
-
-    getSingleMovieDetails = async (movie) =>{
-        const singleMovieId = movie.imdbID;
-        const res = await axios.get(`${this.baseUrl}/?i=${singleMovieId}&apikey=${this.authToken}`);
-        this.setState({ selectedMovie: res.data });
-    }
-
-    render(){
-        console.log(this.state.movies);
-        return (
-            <div className="ui container">
-                <SearchBar onFormSubmit={this.onTermSubmit} />
-
-                <div className="ui grid main">
+    return(       
+        <div className="ui container">
+            <div className="ui grid main">
                     <div className="eleven wide column">
-                        <MovieDetail
-                            movie={this.state.selectedMovie}
-                        />
+                       <MovieDetail movie={movie} />
                     </div>
                     <div className="five wide column">
-                        <MovieList
-                            movies={this.state.movies}
-                            onMovieSelect={this.onMovieSelect}
-                        />
+                          <MovieList movies={movieData} onMovieSelect={onMovieSelect}/>
                     </div>
                 </div>
-            </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default App;

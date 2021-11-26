@@ -3,7 +3,7 @@ import React from 'react';
 
 const MovieDetail = (movie) =>{
     console.log(movie);
-    if (!movie){ return(<div>Loading....</div>)}
+    if (!movie.movie){ return <div>Loading....</div>}
     return (        
         <div className="movieBox container">
             <div className="posterBox">

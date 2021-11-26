@@ -8,7 +8,7 @@ import MovieDetail  from './MovieDetail';
 const App=()=>{
     const [movieData, setMovieData] = useState([]);
     const [movie, setSingleMovie]=useState(null);
-    const baseUrl = "http://www.omdbapi.com";
+    const baseUrl = "https://www.omdbapi.com";
     const authToken = "499e294";
     const term="king";
     

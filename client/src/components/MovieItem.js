@@ -13,9 +13,8 @@ const MovieItem = ({ movie , onMovieSelect}) =>{
                 height={150}
             />
             <div className="content">
-                <div className="header"><b>{movie.Title}</b></div>
-                <div className="header"><b>{movie.Year}</b></div>
-                <div className="header"><b>{movie.Type}</b></div>
+                <div className="movieTitle">{movie.Title}</div>
+                <div><span>{movie.Type}</span> ( <span>{movie.Year}</span> ) </div>
             </div>
         </div>
     )

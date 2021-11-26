@@ -14,9 +14,10 @@ body {
 .imgBox {
 	border-bottom: 5px solid #fff;
 	display: flex !important;
-	color: blue;
+	color: #777;
 	align-items: center !important;
-	background: #ddd;
+	background: #fff;
+	border-bottom:1px solid #ddd;
 	cursor: pointer;
 }
 .content {
@@ -29,11 +30,36 @@ body {
 	flex-direction: column;
 }
 .posterBox {
-	margin-bottom: 50px;
-	padding-top: 20px;
+	height:500px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom:1px solid #eee;
 }
 .contentBox {
+	padding-top:20px !important;	
 	display: flex !important;
 	flex-direction: row !important;
 	align-items: left !important;
+}
+.header{
+	height:100px;
+	text-align: center;
+	border-bottom:1px solid #eee;
+	padding-top:20px;
+}
+.movieTitle{
+	font-weight:bold;
+	color:#333;
+}
+.footer{
+	height:40px;
+	text-align: center;
+	border-top:1px solid #eee;
+	border-bottom:1px solid #eee;
+	padding-top:10px;
+}
+.footer-text{
+	font-size:0.75rem;
+	color:#777;
 }

@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios  from 'axios';
+import Header from './Header';
+import Footer from './Footer';
 import MovieList from './MovieList';
 import MovieDetail  from './MovieDetail';
 
@@ -15,10 +17,11 @@ const App=()=>{
             const response = await axios.get(`${baseUrl}/?s=${term}&apikey=${authToken}`);
             //console.log("line no 22" , response.data);
             const responseData = response.data.Search;
-            console.log("line no 22" , response.data.Search[0]);
+            console.log("line no 18" , response.data.Search[0]);
             const firstMovie=response.data.Search[0];
             getSingleMovieDetails(firstMovie);
-            setMovieData(responseData);           
+            setMovieData(responseData); 
+            setSingleMovie(firstMovie);          
         }
 
         getAllMovies();
@@ -29,6 +32,7 @@ const App=()=>{
     }
 
     const getSingleMovieDetails=async(movie)=>{
+        console.log(movie);
         const movieId = movie.imdbID;
         const res = await axios.get(`${baseUrl}/?i=${movieId}&apikey=${authToken}`);
         console.log(res.data);
@@ -36,6 +40,7 @@ const App=()=>{
     }
     return(       
         <div className="ui container">
+            <Header />
             <div className="ui grid main">
                     <div className="eleven wide column">
                        <MovieDetail movie={movie} />
@@ -44,6 +49,7 @@ const App=()=>{
                           <MovieList movies={movieData} onMovieSelect={onMovieSelect}/>
                     </div>
                 </div>
+            <Footer />
         </div>
     )
 }

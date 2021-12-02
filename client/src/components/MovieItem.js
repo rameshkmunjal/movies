@@ -1,22 +1,22 @@
 import React from 'react';
 import './movieList.css';
+import { Card } from "react-bootstrap";
+
 
 
 const MovieItem = ({ movie , onMovieSelect}) =>{
     return (
-        <div className="imgBox" onClick={()=>onMovieSelect(movie)}> 
-            <img
-                className="ui image"
-                src={movie.Poster}
-                alt={movie.Title}
-                width={100}
-                height={150}
-            />
-            <div className="content">
-                <div className="movieTitle">{movie.Title}</div>
-                <div><span>{movie.Type}</span> ( <span>{movie.Year}</span> ) </div>
-            </div>
-        </div>
+        <div>
+  <Card className="card">
+    <Card.Img className="card-img" variant="top" src={movie.Poster} />
+    <Card.Body>
+      <Card.Text className="card-title">
+        {movie.Title}
+      </Card.Text>
+    </Card.Body>
+  </Card>
+  
+</div>
     )
 }
 

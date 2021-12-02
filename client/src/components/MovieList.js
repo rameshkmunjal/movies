@@ -5,7 +5,7 @@ import MovieItem from './MovieItem';
 const MovieList = ({movies, onMovieSelect}) =>{
     const renderedList = movies.map(movie =>{
         return (
-            <div className="movieBox">                
+            <div>                
                 <MovieItem
                     key={movie.imdbID}
                     movie={movie}
@@ -15,7 +15,7 @@ const MovieList = ({movies, onMovieSelect}) =>{
         )
     })
 
-    return (<div className="ui relaxed divided list">{renderedList}</div>)
+    return (<div className="card-div">{renderedList}</div>)
     
 }
 

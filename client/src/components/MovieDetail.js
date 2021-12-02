@@ -1,6 +1,7 @@
 import './movieList.css';
 import React from 'react';
 
+
 const MovieDetail = (movie) =>{
     console.log(movie);
     if (!movie.movie){ return <div>Loading....</div>}

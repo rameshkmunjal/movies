@@ -8,13 +8,14 @@ body {
 }
 .container {
 	background:#222222;
-	padding: 20px;
+	padding: 0px 20px 0 20px;
 }
 .header{
 	height:30px;
 	text-align: center;
 	padding-top:0px;
 	color:#d3d3d3;
+
 }
 .movieTitle{
 	font-weight:bold;
@@ -31,6 +32,9 @@ body {
 .footer-text{
 	font-size:0.75rem;
 	color:#777;
+}
+.navbar{
+	margin-bottom:20px;
 }
 .nav-container{
 	display:flex;
@@ -99,7 +103,6 @@ body {
 	object-fit: cover;
 }
 .card-title{	
-	
 	display:flex;
 	justify-content: center;
 	align-items: center;
@@ -107,4 +110,5 @@ body {
 	color:#ddd;
 	background-color: #000000;
 	height:75px;
+	padding:10px;
 }
